@@ -1,0 +1,16 @@
+.link{
+    color: black;
+}
+.navBg{
+    background-color: #e5e5e5;
+}
+.log-btn{
+    min-width: 126px;
+    height: 44px;
+    background-color: #251D58;
+    color: white;
+}
+.log-btn:hover{
+    background-color: #231c55;
+    color: white;
+}

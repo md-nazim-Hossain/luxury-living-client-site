@@ -1,0 +1,13 @@
+.thead{
+    background-color: #f4f6f6;
+    border-radius: 15px;
+}
+.green{
+    background-color: #157347!important;
+    color: white;
+}
+.red{
+    background-color: #dc3545!important;
+    color: white;
+    cursor: pointer;
+}

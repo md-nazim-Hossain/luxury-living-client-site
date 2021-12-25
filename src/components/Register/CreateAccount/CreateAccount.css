@@ -1,0 +1,8 @@
+.formControl{
+    border: 0;
+    border-bottom: 1px solid lightgray;
+    border-radius: 0;
+    color: #090524;
+    font-weight: 600;
+    padding-left: 0;
+}
