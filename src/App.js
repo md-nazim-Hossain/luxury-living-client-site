@@ -21,6 +21,7 @@ import BookLists from './components/Body/DashBoard/BookLists/BookLists';
 import useAuth from './hooks/useAuth';
 import Booking from './components/Body/DashBoard/Booking/Booking';
 import Payment from './components/Body/DashBoard/Payment/Payment';
+import OrderLists from './components/Body/DashBoard/OrderLists/OrderLists';
 
 function App() {
 
@@ -55,9 +56,9 @@ function App() {
               <Route path='booking' element={<Booking/>}/>
               <Route path='bookLists' element={<BookLists/>}/>
               <Route path='review' element={<Review/>}/>
-              <Route path='orderList' element={
+              <Route path='orderLists' element={
                 <AdminRoute>
-                  <OrderList/>
+                  <OrderLists/>
                 </AdminRoute>
               }/>
               <Route path='addService' element={

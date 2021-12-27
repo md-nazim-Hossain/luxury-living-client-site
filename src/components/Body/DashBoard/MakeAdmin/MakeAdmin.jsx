@@ -12,7 +12,7 @@ const MakeAdmin = () => {
     }
     const handleAdmin = e =>{
         e.preventDefault();
-        fetch('http://localhost:5000/users/admin',{
+        fetch('https://floating-cliffs-41974.herokuapp.com/users/admin',{
             method:"PUT",
             headers:{
               "content-type":"application/json"

@@ -14,7 +14,7 @@ const BookLists = () => {
 
     //remove order items
     const handleRemoveItem = id =>{
-        fetch(`http://localhost:5000/orderList/${id}`,{
+        fetch(`https://floating-cliffs-41974.herokuapp.com/orderList/${id}`,{
             method:"DELETE",
             headers:{
                 "content-type":"application/json"

@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Form, Row, Col, Button, Image} from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 
 const BookingInfo = () => {
-    const {user} = useAuth();
+    const {user,orderList} = useAuth();
     const {id} = useParams();
     const navigate = useNavigate();
+    const [checkedId,setCheckedId] = useState(false);
     const [active,setActive] = useState(true);
     const [service,setService] = useState({});
 
@@ -16,14 +18,22 @@ const BookingInfo = () => {
     let initialBookingInfo = {serviceId:id,customerName:user.displayName, bookingEmail:user.email, email:user.email,phone:'',address:"",status:"Pending...",payment:false}
     const [bookingInfo,setBookingInfo] = useState(initialBookingInfo);
 
+    useEffect(()=>{
+        const checked = orderList.find(order =>order.serviceId === id && order.payment === false)
+        if(checked){
+            setCheckedId(true)
+        };
+        
+    },[id,orderList]);
+
     useEffect(() =>{
-        fetch(`http://localhost:5000/services/${id}`)
+        fetch(`https://floating-cliffs-41974.herokuapp.com/services/${id}`)
         .then(res => res.json())
         .then(data => setService(data))
       },[id]);
 
     const handleNavigate = () =>{
-        navigate(`/`);
+        navigate(`/dashboard/booking`);
     };
 
     const handleChangeName = e =>{
@@ -47,7 +57,7 @@ const BookingInfo = () => {
     const handelSubmitBookingInfo = e =>{
         e.preventDefault();
  
-        fetch('http://localhost:5000/orderList',{
+        fetch('https://floating-cliffs-41974.herokuapp.com/orderList',{
             method:"POST",
             headers:{
                 "content-type":"application/json"
@@ -58,9 +68,13 @@ const BookingInfo = () => {
             if(data.insertedId){
                 Swal.fire(
                     user.displayName+' Your Service Order Successfull',
-                    'Thank You For Join Us!',
+                    'Please Confirm The Payment For Service',
                     'success'
-                )
+                ).then(data => {
+                    if(data.isConfirmed){
+                        window.location.reload();
+                    }
+                })
             }
             e.target.reset();
             handleNavigate();
@@ -76,7 +90,14 @@ const BookingInfo = () => {
 
     return (
         <div className='text-start p-5 bg-light'>
-            <Container>
+            {checkedId ? <div>
+                <h1>Before Order Same Service But didn't payment ? Please Before Payment then Order Again</h1>
+                <div className='d-flex justify-content-between'>
+                    <div as={HashLink} to='/home#services' className='text-start pt-3'><Button variant="transparent" className='log-btn'>Back To service</Button></div>
+                    <div className='text-end pt-3' onClick={handleNavigate}><Button variant="transparent" className='log-btn'>Go Payment</Button></div>
+                </div>
+            </div>
+            :<Container>
                 {active ? <h1 className='py-5 text-center'>Customer Shipping Information For Provide Service</h1>
                 :<h1 className='py-5 text-center'>Booking Services Confirmation Form</h1>}
                 <Form onSubmit={handelSubmitBookingInfo}>
@@ -202,7 +223,7 @@ const BookingInfo = () => {
                         </div>
                     </Col>
                 </Row>
-            </Container>
+            </Container>}
         </div>
     );
 };

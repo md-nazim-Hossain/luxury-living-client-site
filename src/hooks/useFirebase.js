@@ -111,21 +111,21 @@ const useFirebase = () =>{
 
     //Admin 
     useEffect(() =>{
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://floating-cliffs-41974.herokuapp.com/users/${user.email}`)
         .then(res => res.json())
         .then(data =>setAdmin(data.admin))
     },[user.email]);
 
     // All Service getting from db
     useEffect(() =>{
-      fetch('http://localhost:5000/services')
+      fetch('https://floating-cliffs-41974.herokuapp.com/services')
       .then(res => res.json())
       .then(data => setServices(data))
     },[]);
 
     //Get All Order From Db by user email
     useEffect(()=>{
-      fetch(`http://localhost:5000/orderList/${user.email}`)
+      fetch(`https://floating-cliffs-41974.herokuapp.com/orderList/${user.email}`)
       .then(res => res.json())
       .then(data => setOrderList(data))
     },[user.email]);
@@ -134,7 +134,7 @@ const useFirebase = () =>{
     const saveUser = (email,displayName,method) =>{
           const user = {email,displayName};
 
-          fetch('http://localhost:5000/users',{
+          fetch('https://floating-cliffs-41974.herokuapp.com/users',{
             method:method,
             headers:{
               "content-type":"application/json"

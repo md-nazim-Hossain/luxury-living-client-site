@@ -1,57 +1,75 @@
-import React from 'react';
-import { Col, Form, Image, Row, Button } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { useEffect } from 'react';
+import { Form, Image, } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth';
 import creaditCard from '../../../../Image_Icon/Icon/creaditCard.png';
 import paypal from '../../../../Image_Icon/Icon/image 17.png';
+import Payment from '../Payment/Payment';
 
 const Booking = () => {
-    const {user} = useAuth();
+    const {user,orderList} = useAuth();
+    const [isChecked,setIsChecked] = useState(false);
+    const [checkedId,setCheckedId] = useState('');
+    const [orderPay,setOrderPay] = useState();
+    const [serviceName,setServiceName] = useState({});
+    const [customer,setCustomer] = useState({customerName:user.displayName,bookingEmail:user.email});
+
+    useEffect(()=>{
+        orderList.length && setOrderPay(orderList.find(order => order.serviceName === serviceName && order.payment === false))
+    },[orderList,serviceName]);
+
+    // Change Form field
+    const handleChange = e =>{
+        const field = e.target.name;
+        const value = e.target.value;
+        const newCustomer = {...customer};
+        newCustomer[field] = value;
+        setCustomer(newCustomer);
+
+    };
+    //Checked system 
+    const handleChecked = (e) =>{
+        setIsChecked(isChecked);
+        setCheckedId(e.target.id);
+    }
 
     return (
         <div className='p-5 pb-2'>
             <Form>
-                <Form.Control value={user.displayName} placeholder='Name' required className='mb-3 border-0'/>
-                <Form.Control value={user.email} placeholder='Email' required className='mb-3 border-0'/>
-                <Form.Control placeholder='Service Name' required className='mb-3 border-0'/>
+                <Form.Control name="customerName" onChange={handleChange} value={customer.customerName} placeholder='Name' required className='mb-3 border-0'/>
+                <Form.Control name="bookingEmail" onChange={handleChange} value={customer.bookingEmail} placeholder='Email' required className='mb-3 border-0'/>
+                <Form.Control onChange={e => setServiceName(e.target.value)} placeholder='Service Name' required className='mb-3 border-0'/>
                 <p className='text-muted text-start my-1'>Pay With</p>
                 <div className='d-flex'>
                     <p className='d-flex me-5'>
                         <Form.Check
                             type="radio"
-                            label="Creadit Card"
-                            name="formHorizontalRadios"
+                            label="Card"
+                            name="payment"
                             id="creaditCard"
+                            checked={isChecked}
+                            onChange={handleChecked}
+                            disabled={!orderPay?.serviceCost}
                         />
-                        <Image src={creaditCard} alt =""/>
+                        <Image src={creaditCard}/>
                     </p>
                     <p className='d-flex'>
                         <Form.Check
                             type="radio"
                             label="PayPal"
-                            name="formHorizontalRadios"
+                            name="payment"
                             id="payPal"
+                            checked={isChecked}
+                            onChange={handleChecked}
+                            disabled={!orderPay?.serviceCost}
                         />
-                        <Image src={paypal} alt ="" name="formHorizontalRadios"/>
+                        <Image src={paypal}/>
                     </p>
                 </div>
-                <Row>
-                    <Col>
-                        <Form.Control placeholder='Card Number' required className='mb-3 border-0'/>
-                    </Col>
-                </Row>
-                <Row xs={1} md={2}>
-                    <Col>
-                        <Form.Control placeholder='Expired Date' required className='mb-3 border-0'/>
-                    </Col>
-                    <Col>
-                        <Form.Control placeholder='CVN' required className='mb-3 border-0'/>
-                    </Col>
-                    <Col><small>Your Service Charged Will be <b>$1000</b></small></Col>
-                    <Col>
-                        <div className='text-end pb-5'><Button type='submit' variant="transparent" className='log-btn'>Pay</Button></div>
-                    </Col>
-                </Row>
             </Form>
+            <div>
+                {checkedId === "creaditCard"? <Payment order={orderPay}></Payment>:""}
+            </div>
         </div>
     );
 };

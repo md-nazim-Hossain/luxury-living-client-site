@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import React from 'react';
+import CheckOut from './CheckOut';
 
-const Payment = () => {
-    const{id} = useParams();
-    const [order,setOrder] = useState({});
+const stripePromise = loadStripe('pk_test_51KBChbGo54pmGfjW9VWK5oAazfPyBu4WPenGa5FSOeO2bJ8DDcHiEoLn0tERrQWvgPpGtTMmKC98mDylnm7uFgGk00QYcUlUjY');
+console.log(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
 
-    useEffect(()=>{
-        fetch(`http://localhost:5000/orderList/${id}`)
-        .then(res => res.json())
-        .then(data => setOrder(data))
-    },[id]);
+const Payment = ({order}) => {
 
     return (
         <div>
-            <h1>Pay Please {order._id}</h1>
+            <Elements stripe={stripePromise}>
+                <CheckOut order={order}/>
+            </Elements>
         </div>
     );
 };
