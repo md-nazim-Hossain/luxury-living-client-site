@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Container, Form, Row, Col, Button, Image} from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 
@@ -32,8 +31,8 @@ const BookingInfo = () => {
         .then(data => setService(data))
       },[id]);
 
-    const handleNavigate = () =>{
-        navigate(`/dashboard/booking`);
+    const handleNavigate = (link) =>{
+        navigate(link);
     };
 
     const handleChangeName = e =>{
@@ -73,11 +72,11 @@ const BookingInfo = () => {
                 ).then(data => {
                     if(data.isConfirmed){
                         window.location.reload();
+                        handleNavigate('/dashboard/booking');
                     }
                 })
             }
             e.target.reset();
-            handleNavigate();
 
         }).catch(er =>{
             Swal.fire({
@@ -93,8 +92,8 @@ const BookingInfo = () => {
             {checkedId ? <div>
                 <h1>Before Order Same Service But didn't payment ? Please Before Payment then Order Again</h1>
                 <div className='d-flex justify-content-between'>
-                    <div as={HashLink} to='/home#services' className='text-start pt-3'><Button variant="transparent" className='log-btn'>Back To service</Button></div>
-                    <div className='text-end pt-3' onClick={handleNavigate}><Button variant="transparent" className='log-btn'>Go Payment</Button></div>
+                    <div className='text-start pt-3' onClick={()=>handleNavigate('/home#services')}><Button variant="transparent" className='log-btn'>Back To service</Button></div>
+                    <div className='text-end pt-3' onClick={()=>handleNavigate(`/dashboard/booking`)}><Button variant="transparent" className='log-btn'>Go Payment</Button></div>
                 </div>
             </div>
             :<Container>

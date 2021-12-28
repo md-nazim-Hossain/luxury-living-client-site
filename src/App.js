@@ -11,7 +11,6 @@ import Review from './components/Body/DashBoard/Review/Review';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import AddService from './components/Body/DashBoard/AddService/AddService';
 import MakeAdmin from './components/Body/DashBoard/MakeAdmin/MakeAdmin';
-import OrderList from './components/Body/DashBoard/OrderList/OrderList';
 import ManageServices from './components/Body/DashBoard/ManageServices/ManageServices';
 import AdminRoute from './components/Body/DashBoard/AdminRoute/AdminRoute';
 import ExploreServices from './components/Body/Home/ExploreServices/ExploreServices';
@@ -52,7 +51,7 @@ function App() {
                 <DashBoard/>
               </PrivateRoute>
             }>
-              <Route index element={!admin ? <Booking/>: <OrderList/>}/>
+              <Route index element={!admin ? <Booking/>: <OrderLists/>}/>
               <Route path='booking' element={<Booking/>}/>
               <Route path='bookLists' element={<BookLists/>}/>
               <Route path='review' element={<Review/>}/>

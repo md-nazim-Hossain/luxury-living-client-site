@@ -1,18 +1,25 @@
 import React,{useState, useEffect} from 'react';
-import { Container, Spinner, Table } from 'react-bootstrap';
+import { Container, Button, Spinner, Table } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import useAuth from '../../../../hooks/useAuth';
 import OrderList from '../OrderList/OrderList';
 
 const OrderLists = () => {
     const [orderLists,setOrderLists] = useState([]);
+    const [pageCount,setPageCount] = useState();
+    const [page,setPage] = useState(0);
     const{isLoading} = useAuth();
+    const size = 8;
 
     useEffect(() =>{
-        fetch(`https://floating-cliffs-41974.herokuapp.com/orderList`)
+        fetch(`http://localhost:5000/orderList?page=${page}&&size=${size}`)
         .then(res => res.json())
-        .then(data => setOrderLists(data))
-    },[setOrderLists]);
+        .then(data => {
+            setOrderLists(data.orderList)
+            const count = data.count;
+            setPageCount(Math.ceil(count / size));
+        })
+    },[page]);
 
     const handleOrderPending = (id) =>{
 
@@ -49,9 +56,14 @@ const OrderLists = () => {
     };
     
     if(!orderLists.length){
+        setInterval(()=>{
         return <div className='d-flex justify-content-center align-items-center'>
             <h1>Items Not Found</h1>
         </div>
+           
+        },3000);
+
+        return <Spinner animation="border" className="m-5 p-5"/>
     }
 
     return (
@@ -80,6 +92,18 @@ const OrderLists = () => {
                     </tbody>
                 </Table>
             </div>}
+            <div className='text-center'>
+                <p>
+                    {
+                        [...Array(pageCount).keys()].map(num =><Button 
+                            variant={num===page?'primary':'light'}
+                            onClick={()=>setPage(num)}
+                            disabled={num===page}
+                            className='m-2'
+                            >{num+1}</Button>)
+                }
+                </p>
+            </div>
         </Container>
     );
 };
