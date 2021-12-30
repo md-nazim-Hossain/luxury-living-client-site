@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Container, Image, Row,Button } from 'react-bootstrap';
 import './Banner.css';
 import {Zoom, Fade} from 'react-reveal';
+import { HashLink } from 'react-router-hash-link';
 
 const Banner = () => {
     return (
@@ -19,7 +20,7 @@ const Banner = () => {
                             </Zoom>
                         </p>
                         <Zoom bottom>
-                        <Button variant='transparent' className='log-btn'>Booking</Button>
+                            <HashLink to='/home#services'><Button variant='transparent' className='log-btn'>Booking</Button></HashLink>
                         </Zoom>
                     </div>
                 </Col>

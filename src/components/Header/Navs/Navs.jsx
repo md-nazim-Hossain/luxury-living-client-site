@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Button, Container, Nav, Navbar, } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../../hooks/useAuth';
 import logo from '../../../Image_Icon/logo.png';
@@ -38,7 +37,7 @@ const Navs = () => {
                         <div className='d-flex justify-content-center align-items-center'>
                             <span className='me-2'>{user.displayName}</span>
                         </div>
-                        {!user.email ? <NavLink to="/login"><Button variant="transparent" className='log-btn'>Login</Button></NavLink>
+                        {!user.email ? <HashLink to="/login#logIn"><Button variant="transparent" className='log-btn'>Login</Button></HashLink>
                         :<Button onClick={signOutUser} variant="transparent" className='log-btn'>Log Out</Button>}
                     </Nav>
                     {!admin&&<Nav>
