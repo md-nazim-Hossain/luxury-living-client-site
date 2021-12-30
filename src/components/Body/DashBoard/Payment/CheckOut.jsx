@@ -128,12 +128,11 @@ const CheckOut = ({order}) => {
                     />
                 </div>
                 <Row xs={1} md={2}>
-                   <Col xs={8}>
-                        <p className='py-4'><small>Your Service Charged Will be <b>${order?.serviceCost ? order?.serviceCost : "00"}</b></small></p>
-                        {order?._id}
+                   <Col>
+                      <p className='checkout-service-cost'><small>Your Service Charged Will be <b>${order?.serviceCost ? order?.serviceCost : "00"}</b></small></p>
                    </Col>
-                    <Col xs={4}>
-                        <div className='text-end py-4'><Button type='submit' variant="transparent" className='log-btn' disabled={!stripe || processing || success}>Pay ${serviceCost}</Button></div>
+                    <Col>
+                      <div className='payment-button'><Button type='submit' variant="transparent" className='log-btn' disabled={!stripe || processing || success}>Pay ${serviceCost}</Button></div>
                     </Col>
                 </Row>
             </Form>

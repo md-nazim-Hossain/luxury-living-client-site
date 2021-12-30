@@ -42,8 +42,8 @@ const BookLists = () => {
     };
     
     return (
-        <div style={{padding:'15px',textAlign:'start'}}>
-            <Container>
+        <div className='bookingListClass'>
+            <Container className='bookingListContainer'>
                 <Row xs={1} md={2} className='g-4'>
                     {
                         orderList.map(order => <BookList key={order._id}

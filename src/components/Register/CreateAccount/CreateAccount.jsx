@@ -4,6 +4,7 @@ import { NavLink,useLocation,useNavigate } from 'react-router-dom';
 import './CreateAccount.css';
 import google from '../../../Image_Icon/Icon/Group 573.png';
 import useAuth from '../../../hooks/useAuth';
+import logo from '../../../Image_Icon/logo.png'
 
 const CreateAccount = () => {
 
@@ -34,7 +35,8 @@ const CreateAccount = () => {
         <div className='py-5' style={{backgroundColor:"white"}}>
             <Container>
                 <Form onSubmit={handleCreateForm}>
-                    <div className='w-50 mx-auto border py-3 px-5'>
+                    <Image src={logo} className='py-5'/>
+                    <div className='responsive-width mx-auto border'>
                         <h4 className='text-start pe-3 pb-3 text-color fw-bold'>Create an account</h4>
                         <Form.Control name='Fname' onBlur={ handleUserDetails } placeholder='First Name' className='mb-4 formControl' required/>
                         <Form.Control name='Lname' onBlur={ handleUserDetails } placeholder='Last Name' className='mb-4 formControl' required/>
@@ -47,8 +49,8 @@ const CreateAccount = () => {
                     </div>
                 </Form>
                 <h5 className='text-color fw-bold py-3'>Or</h5>
-                <div className='w-50 mx-auto'>
-                    <Button onClick={() =>signWithGoogle(navigate,location)} variant="transparent" className='w-75 mb-4 border rounded-pill fw-m-bold text-color'>
+                <div className='responsive-width mx-auto'>
+                    <Button onClick={() =>signWithGoogle(navigate,location)} variant="transparent" className='google-btn mb-4 border rounded-pill fw-m-bold text-color'>
                         <Image src={google} className='me-3'/>
                         <span>Continue With Google</span>
                     </Button>

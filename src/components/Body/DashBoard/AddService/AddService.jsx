@@ -59,7 +59,7 @@ const AddService = () => {
     };
 
     return (
-        <div className='p-4'>
+        <div className='addServiceClass'>
            <Form onSubmit={submitAddService} className='text-start p-4' style={{backgroundColor:"white",borderRadius:"15px"}}>
                 <Row xs={1} md={2}>
                     <Col>

@@ -13,3 +13,76 @@
   display: inline;
   color: red;
 }
+
+/* booking componenet css */
+.bookingClass{
+  padding: 5rem;
+  padding-bottom: 1.5rem;
+}
+.checkout-service-cost{
+  padding: 2rem 0rem;
+}
+.payment-button{
+  text-align: end;
+  padding: 1.4rem 0;
+}
+
+/* bookingList component css */
+.bookingListClass{
+  padding: 15px;
+  text-align: start;
+}
+
+/* Review Component css */
+.review-class{
+  width: 50%;
+  padding:3rem 2rem;
+}
+
+/* Admin OrderList Component Css */
+.orderListClass{
+  padding: 3rem 0;
+}
+
+/* Admin Add Service Component Css */
+.addServiceClass{
+  padding: 2rem;
+}
+
+/* media query */
+@media screen and (max-width: 480px){
+
+  /* booking component css media  */
+  .bookingClass{
+    padding:2rem 1rem;
+  }
+  .checkout-service-cost{
+    padding: 1rem 0rem;
+    margin: 0;
+  }
+  .payment-button{
+    padding: 0;
+    text-align: center;
+  }
+
+  /* bookingList component css */
+  .bookingListContainer,.bookingListClass{
+    padding:5px !important;
+  }
+
+  /* Review Component css */
+  .review-class{
+    width: 100%;
+    padding:2rem 1rem;
+  }
+
+  /* Admin OrderList Class */
+  .orderListClass{
+    padding: 1rem;
+  }
+
+  /* Admin Add Service Class CSS */
+  .addServiceClass{
+    padding: .9rem;
+  }
+}

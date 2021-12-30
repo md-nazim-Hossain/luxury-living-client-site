@@ -32,7 +32,7 @@ const OrderLists = () => {
     };
 
     return (
-        <Container className='py-3'>
+        <Container className='orderListClass'>
             {orderLists.length && <div style={{backgroundColor:"white",borderRadius:"15px"}} className='p-3'>
                 <Table responsive="sm" className='p-5' >
                     <thead>

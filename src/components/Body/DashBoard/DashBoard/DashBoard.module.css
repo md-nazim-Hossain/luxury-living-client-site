@@ -35,3 +35,27 @@
     display: inline;
     margin-right: 6px;
 }
+.mobileDevicesHide{
+    text-align: start;
+}
+/* Media Query */
+@media screen and (max-width: 480px){
+  .mobileDevicesHide{
+      display: none;
+    }
+  .dashBoardMenu{
+        display: flex;
+        flex-direction: row!important;
+        justify-content: space-evenly;
+    }
+    .icon{
+        display: block;
+        margin: 0 auto;
+    }
+    .adminMenu{
+        text-align: center;
+        display: block;
+        font-size: 14px;
+    }
+ 
+}

@@ -34,7 +34,7 @@ const Booking = () => {
     }
 
     return (
-        <div className='p-5 pb-2'>
+        <div className='bookingClass'>
             <Form>
                 <Form.Control name="customerName" onChange={handleChange} value={customer.customerName} placeholder='Name' required className='mb-3 border-0'/>
                 <Form.Control name="bookingEmail" onChange={handleChange} value={customer.bookingEmail} placeholder='Email' required className='mb-3 border-0'/>

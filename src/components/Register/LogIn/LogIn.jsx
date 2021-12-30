@@ -24,7 +24,7 @@ const LogIn = () => {
             <Container>
                 <Form onSubmit={handleSignUser}>
                     <Image src={logo} className='py-5'/>
-                    <div className='w-50 mx-auto py-3 border px-5'>
+                    <div className='responsive-width mx-auto border'>
                         <h4 className='text-start pe-3 pb-3 text-color fw-bold'>Login your account</h4>
                         <Form.Control onBlur={e =>setEmail(e.target.value)} type='email' placeholder='Username or Email' className='mb-4 formControl'/>
                         <Form.Control onBlur={e =>setPass(e.target.value)} type='password' placeholder='Password' className='mb-4 formControl'/>
@@ -34,8 +34,8 @@ const LogIn = () => {
                     </div>
                 </Form>
                 <h5 className='text-color fw-bold py-3'>Or</h5>
-                <div className='w-50 mx-auto'>
-                    <Button style={{backgroundColor:"white"}} onClick={()=>signWithGoogle(navigate,location)} variant="transparent" className='w-75 mb-4 border rounded-pill fw-m-bold text-color'>
+                <div className='responsive-width mx-auto'>
+                    <Button style={{backgroundColor:"white"}} onClick={()=>signWithGoogle(navigate,location)} variant="transparent" className='google-btn mb-4 border rounded-pill fw-m-bold text-color'>
                         <Image src={google} className='me-3'/>
                         <span>Continue With Google</span>
                     </Button>

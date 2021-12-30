@@ -39,7 +39,7 @@ const Review = () => {
     }
 
     return (
-        <div className='p-5 w-50'>
+        <div className='review-class'>
             <Form onSubmit={handleReview}>
                 <Form.Control onBlur={handleFieldName} name="name" placeholder='Your Name' required className='mb-3 border-0'/>
                 <Form.Control onBlur={handleFieldName} name="designation" placeholder='Company Name Designation' required className='mb-3 border-0'/>
