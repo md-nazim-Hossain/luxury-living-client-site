@@ -49,6 +49,22 @@
   padding: 2rem;
 }
 
+/* Admin Make Admin Component Css */
+.make-admin-container{
+  padding: 5rem;
+}
+.make-admin{
+  padding: 3rem;
+}
+
+/* home page conatct component */
+.contact-form{
+  width: 50%;
+}
+.conatact-container{
+  padding: 3rem;
+}
+
 /* media query */
 @media screen and (max-width: 480px){
 
@@ -84,5 +100,21 @@
   /* Admin Add Service Class CSS */
   .addServiceClass{
     padding: .9rem;
+  }
+  
+  /* Admin Add Service Component Css */
+  .make-admin-container{
+    padding: 1rem !important;
+  }
+  .make-admin{
+    padding: 1rem;
+  }
+
+  /* home page conatct component */
+  .contact-form{
+    width: 95%;
+  }
+  .conatact-container{
+    padding: 1rem;
   }
 }

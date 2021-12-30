@@ -41,8 +41,8 @@ const MakeAdmin = () => {
     }
 
     return (
-        <div className='p-4'>
-           <Container className='p-5' style={{backgroundColor:"white",borderRadius:"15px"}}>
+        <div className='make-admin'>
+           <Container className='make-admin-container' style={{backgroundColor:"white",borderRadius:"15px"}}>
                <Form onSubmit={handleAdmin}>
                    <Row xs={1} sm={1} md={2}>
                      <Col xs={12} md={9}>

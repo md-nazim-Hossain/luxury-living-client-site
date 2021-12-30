@@ -53,3 +53,17 @@ body {
   width: 64px;
   height: 64px;
 }
+.testmonials{
+  padding: 5rem;
+}
+
+/* media query */
+
+@media screen and (max-width: 480px){
+  .testmonials{
+    padding: 1rem;
+  }
+  .testMonials{
+    padding: 10px 4px;
+  }
+}

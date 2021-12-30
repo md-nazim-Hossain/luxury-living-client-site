@@ -22,11 +22,11 @@ const TestMonials = () => {
     const halfStar = <i className="far fa-star"></i>;
 
     return (
-        <div style={{backgroundColor:"#E5E5E5"}} className='p-5'>
+        <div style={{backgroundColor:"#E5E5E5"}} className='testmonials'>
             <p className="common-title text-color py-4">Testmonials</p>
             <Swiper slidesPerView={3} spaceBetween={30} pagination={{
                 "clickable": true
-                }} className="mySwiper p-5"
+                }} className="mySwiper testmonials"
                 breakpoints={{
                     300:{
                         width:300,

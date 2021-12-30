@@ -51,9 +51,9 @@ const Contact = () => {
                 <Bounce left cascade>Let us handle your</Bounce>
                 <Bounce right cascade> project,professionally</Bounce> 
             </p>
-            <Container className='py-5'>
+            <Container className='conatact-container'>
                 <Form onSubmit={sendEmail}>
-                    <div className='w-50 mx-auto mb-4'>
+                    <div className='contact-form mx-auto mb-4'>
                         <Row xs={1} sm={2} md={2}>
                             <Col>
                                 <Bounce left><Form.Control onBlur={handleForm} name="firstName" placeholder="First name"  className='mb-3' style={bg}/></Bounce>

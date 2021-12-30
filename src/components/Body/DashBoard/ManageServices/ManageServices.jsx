@@ -47,7 +47,7 @@ const ManageServices = () => {
                     <thead>
                         <tr className='p-5 thead'>
                             <td>Id</td>
-                            <td>Name</td>
+                            <td>Service Name</td>
                             <td>Price</td>
                             <td>Action</td>
                         </tr>
