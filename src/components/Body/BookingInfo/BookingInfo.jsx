@@ -88,7 +88,7 @@ const BookingInfo = () => {
     }
 
     return (
-        <div className='text-start p-5 bg-light'>
+        <div className='bg-light bookingInfo'>
             {checkedId ? <div>
                 <h1>Before Order Same Service But didn't payment ? Please Before Payment then Order Again</h1>
                 <div className='d-flex justify-content-between'>
@@ -208,16 +208,16 @@ const BookingInfo = () => {
                             </Form.Group>
                         </Col>
                     </Row>}
-                    {!active && <div className='text-end pt-3'><Button type='submit' variant="transparent" className='log-btn'>Book Now</Button></div>}
+                    {!active && <div className='nextBtn'><Button type='submit' variant="transparent" className='log-btn'>Book Now</Button></div>}
                 </Form>
-                <Row xs={1} sm={2} md={2}>
+                <Row>
                     <Col>
-                        <div className='text-start pt-3' onClick={() => setActive(true)}>
+                        <div className='prevBtn' onClick={() => setActive(true)}>
                             <Button variant="transparent" className='log-btn' {...active && {disabled:true}}>Prev</Button>
                         </div>
                     </Col>
                     <Col>
-                        <div className='text-end pt-3' onClick={() => setActive(false)}>
+                        <div className='nextBtn' onClick={() => setActive(false)}>
                             <Button variant="transparent" className='log-btn' {...!active && {disabled:true}}>Next</Button>
                         </div>
                     </Col>

@@ -65,6 +65,19 @@
   padding: 3rem;
 }
 
+/* Booking Info Component Css */
+.bookingInfo{
+  text-align: start;
+  padding: 3rem;
+}
+.prevBtn{
+  text-align: start;
+  padding-top: 2rem;
+}
+.nextBtn{
+  text-align: end;
+  padding-top: 2rem;
+}
 /* media query */
 @media screen and (max-width: 480px){
 
@@ -115,6 +128,11 @@
     width: 95%;
   }
   .conatact-container{
+    padding: 1rem;
+  }
+
+  /* Booking Info Component Css */
+  .bookingInfo{
     padding: 1rem;
   }
 }
