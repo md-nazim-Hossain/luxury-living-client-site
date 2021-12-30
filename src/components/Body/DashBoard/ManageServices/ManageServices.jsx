@@ -18,7 +18,7 @@ const ManageServices = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/services/${id}`,{
+              fetch(` https://floating-cliffs-41974.herokuapp.com/services/${id}`,{
                   method:'DELETE',
                   headers:{
                       "content-type":"application/json"
