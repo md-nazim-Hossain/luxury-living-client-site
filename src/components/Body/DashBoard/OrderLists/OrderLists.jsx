@@ -1,6 +1,5 @@
 import React,{useState, useEffect} from 'react';
-import { Container, Button, Spinner, Table } from 'react-bootstrap';
-import Swal from 'sweetalert2';
+import { Container, Button, Spinner, Table, } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth';
 import OrderList from '../OrderList/OrderList';
 
@@ -12,7 +11,7 @@ const OrderLists = () => {
     const size = 8;
 
     useEffect(() =>{
-        fetch(`http://localhost:5000/orderList?page=${page}&&size=${size}`)
+        fetch(`https://floating-cliffs-41974.herokuapp.com/orderList?page=${page}&&size=${size}`)
         .then(res => res.json())
         .then(data => {
             setOrderLists(data.orderList)
@@ -21,50 +20,16 @@ const OrderLists = () => {
         })
     },[page]);
 
-    const handleOrderPending = (id) =>{
-
-        fetch(`https://floating-cliffs-41974.herokuapp.com/orderList/${id}`,{
-            method:"PUT",
-            headers:{
-                "content-type":"application/json"
-            },
-            body:JSON.stringify({status:"Done"})
-        })
-        .then(res => res.json())
-        .then(data =>{
-            if(data.modifiedCount){
-                Swal.fire(
-                    'Order Approved By Admin Successfully',
-                    'Thank You For Approved!',
-                    'success'
-                )
-            }
-            
-        }).catch(er =>{
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...,An Error Occured, Please Try Again !',
-                text: er.message,
-            });
-        })
-    };
-
-
 
     if(isLoading){
         return <Spinner animation="border" className="m-5 p-5"/>
     };
     
     if(!orderLists.length){
-        setInterval(()=>{
         return <div className='d-flex justify-content-center align-items-center'>
             <h1>Items Not Found</h1>
         </div>
-           
-        },3000);
-
-        return <Spinner animation="border" className="m-5 p-5"/>
-    }
+    };
 
     return (
         <Container className='py-3'>
@@ -77,6 +42,7 @@ const OrderLists = () => {
                             <td>Service</td>
                             <td>Pay With</td>
                             <td>Status</td>
+                            <td>Delivery Status</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -84,7 +50,6 @@ const OrderLists = () => {
                         orderLists.map(order => <OrderList
                         key={order._id}
                         order={order}
-                        handleOrderPending={handleOrderPending}
                         >
 
                         </OrderList>)

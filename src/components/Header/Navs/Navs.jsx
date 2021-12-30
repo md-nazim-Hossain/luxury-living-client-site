@@ -1,14 +1,24 @@
-import React from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import React, { useRef } from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { Button, Container, Nav, Navbar, } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import useAuth from '../../../hooks/useAuth';
 import logo from '../../../Image_Icon/logo.png';
 import './Navs.css';
+import Tooltips from './Tooltips';
 
 const Navs = () => {
-    const {user,signOutUser,orderList,admin} = useAuth();
- 
+    const {user,signOutUser,orderList,admin,setOrderList} = useAuth();
+    const [notify,setNotify] = useState([]);
+    const [show, setShow] = useState(false);
+    const target = useRef(null);
+    
+    useEffect(()=>{
+        orderList.length && setNotify(orderList.filter(order => order?.deliveryStatus === 'Delivered'))
+    },[orderList]);
+
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" variant='light' fixed='top' className='navBg'>
@@ -38,6 +48,20 @@ const Navs = () => {
                                 </svg>
                                 <h5 className='common-color fw-bold'>{orderList.length}</h5>
                             </div>
+                            <div className='d-flex justify-content-center cursor' ref={target}  onClick={()=> setShow(!show)}>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-nav" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                </svg>
+                                <h5 className='common-color fw-bold'>{notify.length}</h5>
+                            </div>
+                            <Tooltips 
+                                target={target} 
+                                show={show} 
+                                notify={notify} 
+                                setNotify={setNotify}
+                                setOrderList={setOrderList}
+                                orderList={orderList}
+                            ></Tooltips>
                         </Nav>}
                 </Navbar.Collapse>
                 </Container>

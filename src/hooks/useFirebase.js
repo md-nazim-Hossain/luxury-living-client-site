@@ -130,6 +130,18 @@ const useFirebase = () =>{
       .then(data => setOrderList(data))
     },[user.email]);
 
+    //GET ORDERLIST MODIFIED PAY ID
+    const getOrderListById = (id,modifiedObject) =>{
+
+        return fetch(`https://floating-cliffs-41974.herokuapp.com/orderList/${id}`,{
+              method:"PUT",
+              headers:{
+                  "content-type":"application/json"
+              },
+              body:JSON.stringify(modifiedObject === 'Done' ? {status:modifiedObject}:{deliveryStatus:modifiedObject})
+            });
+        }
+
     // User Details set On DataBase
     const saveUser = (email,displayName,method) =>{
           const user = {email,displayName};
@@ -167,8 +179,10 @@ const useFirebase = () =>{
         admin,
         services,
         orderList,
+        setServices,
         setOrderList,
         setIsLoading,
+        getOrderListById,
         setError,
         signWithGoogle,
         signOutUser,

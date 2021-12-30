@@ -1,12 +1,16 @@
 import React from 'react';
 import useAuth from '../../../../hooks/useAuth';
 import Bounce from 'react-reveal/Bounce';
-import { Container, Row, Button } from 'react-bootstrap';
+import { Container, Row, Button, Spinner } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import Service from '../Service/Service';
 
 const ExploreServices = () => {
     const {services} = useAuth();
+
+    if(!services.length){
+        return <Spinner animation="border" className="m-5 p-5"/>
+    }
 
     return (
         <div className='py-5 bg-light'>

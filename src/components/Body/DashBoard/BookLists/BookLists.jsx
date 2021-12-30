@@ -7,11 +7,6 @@ import BookList from '../BookList/BookList';
 const BookLists = () => {
     const{orderList,setOrderList} = useAuth();
 
-    const style={
-        padding:"15px",
-        textAlign:"start"
-    };
-
     //remove order items
     const handleRemoveItem = id =>{
         fetch(`https://floating-cliffs-41974.herokuapp.com/orderList/${id}`,{
@@ -47,7 +42,7 @@ const BookLists = () => {
     };
     
     return (
-        <div style={style}>
+        <div style={{padding:'15px',textAlign:'start'}}>
             <Container>
                 <Row xs={1} md={2} className='g-4'>
                     {

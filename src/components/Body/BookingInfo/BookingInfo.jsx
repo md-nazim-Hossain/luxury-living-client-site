@@ -14,7 +14,7 @@ const BookingInfo = () => {
 
     const {name,img,details,cost} = service;
 
-    let initialBookingInfo = {serviceId:id,customerName:user.displayName, bookingEmail:user.email, email:user.email,phone:'',address:"",status:"Pending...",payment:false}
+    let initialBookingInfo = {serviceId:id,customerName:user.displayName, bookingEmail:user.email, email:user.email,phone:'',address:"",status:"Pending...",payment:false,deliveryStatus:"Not Delivered"}
     const [bookingInfo,setBookingInfo] = useState(initialBookingInfo);
 
     useEffect(()=>{

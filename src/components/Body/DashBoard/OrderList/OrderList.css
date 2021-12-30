@@ -3,11 +3,33 @@
     border-radius: 15px;
 }
 .green{
-    background-color: #157347!important;
-    color: white;
+    color: #30db8b;
 }
 .red{
-    background-color: #dc3545!important;
-    color: white;
+    color: #eb2f06;
     cursor: pointer;
+}
+.not-delivered{
+    color: #eb2f06;
+    padding: 8px 5px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+}
+.not-delivered:hover{
+    color: #fa983a;
+}
+.delivered{
+    color: #78e08f;
+    padding: 8px 5px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+}
+.processing{
+    color: #ffa801;
+    padding: 8px 5px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
 }

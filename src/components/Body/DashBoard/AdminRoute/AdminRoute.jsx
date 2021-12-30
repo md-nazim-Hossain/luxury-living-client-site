@@ -12,7 +12,7 @@ const AdminRoute = ({children}) => {
         </div>
     };
     if(!admin){
-        return <div className='d-flex justify-content-center align-items-center p-5' style={{backgroundColor:"white"}}>
+        return <div className='d-flex justify-content-center align-items-center p-5'>
             <Spinner animation="border" />
         </div>
     };

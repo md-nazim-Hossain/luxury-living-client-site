@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Button } from 'react-bootstrap';
+import { Container, Row, Button, Spinner } from 'react-bootstrap';
 import Bounce from 'react-reveal/Bounce';
 import Service from '../Service/Service';
 import useAuth from '../../../../hooks/useAuth';
@@ -7,7 +7,11 @@ import { NavLink } from 'react-router-dom';
 
 const Services = () => {
 
-    const {services} = useAuth();
+    const {services,isLoading} = useAuth();
+
+    if(isLoading || !services.length){
+        return <Spinner animation="border" className="m-5 p-5"/>
+    }
 
     return (
         <div className='py-5 bg-light' id='services'>
